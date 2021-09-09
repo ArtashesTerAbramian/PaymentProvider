@@ -47,8 +47,7 @@ namespace PaymentProvider.Controllers
         [HttpPost]
         public ActionResult<string> ConfirmPayment([FromBody] ConfirmPaymentRequest payment)
         {
-            var PaymentRepository = new PaymentRepository();
-            var response = PaymentRepository.ConfirmPayment(payment);
+            var response = _paymentRep.ConfirmPayment(payment);
 
             if (response != null)
             {
@@ -62,8 +61,7 @@ namespace PaymentProvider.Controllers
         public ActionResult<string> GetPaymentStatus(string transactionId)
         {
 
-            var PaymentRepository = new PaymentRepository();
-            var Status = PaymentRepository.GetTransactionStatus(transactionId);
+            var Status = _paymentRep.GetTransactionStatus(transactionId);
             if(Status != null)
             {
                 Status.Result.ToString();

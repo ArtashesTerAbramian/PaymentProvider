@@ -10,5 +10,7 @@ namespace PaymentProvider.Data.Repositories.Interfaces
     public interface IPaymentRepository
     {
         Task<string> CreatePayment(CreatePaymentRequest model);
+        Task<string> ConfirmPayment(ConfirmPaymentRequest model);
+        Task<string> GetTransactionStatus(string transactionId);
     }
 }
