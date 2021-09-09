@@ -60,17 +60,18 @@ namespace PaymentProvider.Data.Repositories
 
                 using (var httpClient = new HttpClient { BaseAddress = baseAddress })
                 {
-
-
                     httpClient.DefaultRequestHeaders.TryAddWithoutValidation("6fc3aa31-7afd-4df1-825f-192e60950ca1", "<merchant identifier>");
 
                     httpClient.DefaultRequestHeaders.TryAddWithoutValidation("53cr3t", "<merchant secret key>");
+
                     string jsonModel = JsonConvert.SerializeObject(model);
+
                     using (var content = new StringContent(jsonModel, System.Text.Encoding.Default, "application/json"))
                     {
                         using (var response = await httpClient.PostAsync("payment/confirm", content))
                         {
                             string responseData = await response.Content.ReadAsStringAsync();
+
                             return responseData;
                         }
                     }
@@ -110,8 +111,5 @@ namespace PaymentProvider.Data.Repositories
             }
             return null;
         }
-
-
-
     }
 }

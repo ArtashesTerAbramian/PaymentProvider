@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PaymentProvider.Controllers
 {
@@ -36,7 +35,7 @@ namespace PaymentProvider.Controllers
         {
             var response =_paymentRep.CreatePayment(payment);
 
-            if (response != null)
+            if (response != null && !string.IsNullOrEmpty(response.Result))
             {
                 return response.Result.ToString();
             }
@@ -49,7 +48,7 @@ namespace PaymentProvider.Controllers
         {
             var response = _paymentRep.ConfirmPayment(payment);
 
-            if (response != null)
+            if (response != null && !string.IsNullOrEmpty(response.Result))
             {
                 return Ok();
             }
@@ -62,7 +61,7 @@ namespace PaymentProvider.Controllers
         {
 
             var Status = _paymentRep.GetTransactionStatus(transactionId);
-            if(Status != null)
+            if(Status != null && !string.IsNullOrEmpty(Status.Result))
             {
                 Status.Result.ToString();
             }
