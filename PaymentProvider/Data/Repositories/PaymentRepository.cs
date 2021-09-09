@@ -99,8 +99,6 @@ namespace PaymentProvider.Data.Repositories
                     {
 
                         string responseData = await response.Content.ReadAsStringAsync();
-                        int k = 0;
-                        int b = 5 / k;
                         return responseData;
                     }
                 }

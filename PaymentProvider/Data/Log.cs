@@ -10,9 +10,6 @@ namespace PaymentProvider.Data
     public class Log
     {
         static string sLogFolder;
-
-        #region Write message
-
     
         public static void Write(string Message)
         {
@@ -50,12 +47,6 @@ namespace PaymentProvider.Data
             catch { }
         }
 
-
-
-        #endregion
-
-        #region Write Exception
-
         public void Write(Exception exceptionToLog)
         {
             try
@@ -85,10 +76,6 @@ namespace PaymentProvider.Data
             }
             catch { }
         }
-
-        #endregion
-
-
     }
 
 }
